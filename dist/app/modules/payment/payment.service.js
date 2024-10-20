@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.paymentServices = void 0;
 const slot_mode_1 = require("../slot/slot.mode");
 const confirmationService = (transactionId) => __awaiter(void 0, void 0, void 0, function* () {
+    //   const verifyResponse = await verifyPayment(transactionId);
+    //   console.log(verifyResponse);
     const result = yield slot_mode_1.Slot.findOneAndUpdate({ transactionId }, {
         isBooked: "booked",
     }, { new: true });

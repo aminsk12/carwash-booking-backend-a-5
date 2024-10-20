@@ -37,7 +37,8 @@ const createSlot = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         // Calculate the total available duration
         const totalDuration = endTotalMinutes - startTotalMinutes;
         // Calculate the number of slots
-        const numberOfSlots = totalDuration / serviceDuration;
+        // const numberOfSlots = totalDuration / serviceDuration;
+        const numberOfSlots = Math.floor(totalDuration / serviceDuration);
         const slots = [];
         let currentStartTime = startTotalMinutes;
         for (let i = 0; i < numberOfSlots; i++) {

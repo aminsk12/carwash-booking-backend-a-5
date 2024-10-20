@@ -12,10 +12,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isPasswordMatched = void 0;
+exports.verifyToken = exports.createToken = exports.isPasswordMatched = void 0;
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const isPasswordMatched = (plainPassword, hashedPassword) => __awaiter(void 0, void 0, void 0, function* () {
     const isMatch = yield bcrypt_1.default.compare(plainPassword, hashedPassword);
     return isMatch;
 });
 exports.isPasswordMatched = isPasswordMatched;
+const createToken = (jwtPayload, secret, expiresIn) => {
+    return jsonwebtoken_1.default.sign(jwtPayload, secret, {
+        expiresIn,
+    });
+};
+exports.createToken = createToken;
+const verifyToken = (token, secret) => {
+    return jsonwebtoken_1.default.verify(token, secret);
+};
+exports.verifyToken = verifyToken;

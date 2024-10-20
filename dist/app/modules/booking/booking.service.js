@@ -54,7 +54,7 @@ const createBooking = (payload, userId) => __awaiter(void 0, void 0, void 0, fun
     };
     //! Payment
     const paymentSession = yield (0, payment_utils_1.initiatePayment)(paymentData);
-    // console.log(paymentSession);
+    console.log(paymentSession);
     // Update slot status to booked
     slot.isBooked = "booked";
     yield slot.save();
@@ -74,6 +74,7 @@ const createBooking = (payload, userId) => __awaiter(void 0, void 0, void 0, fun
         },
     ]);
     return { populatedBooking, paymentSession };
+    // return populatedBooking;
 });
 const getAllBookings = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield booking_model_1.Booking.find().populate([

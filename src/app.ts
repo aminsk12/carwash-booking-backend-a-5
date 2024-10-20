@@ -7,7 +7,11 @@ import notFound from "./app/middlewares/notFound";
 const app = express();
 
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+  origin: 'https://car-wash-booking-frontend-a-5.vercel.app', 
+  //origin: 'http://localhost:5173/', 
+  
+}));
 
 app.use("/api", router);
 

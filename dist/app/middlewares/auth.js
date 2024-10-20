@@ -63,6 +63,7 @@ const auth = (...requiredRoles) => {
         }
         req.userId = userId;
         req.name = name;
+        req.user = user;
         next();
     }));
 };
