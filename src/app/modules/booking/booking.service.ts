@@ -49,7 +49,7 @@ const createBooking = async (payload: TBooking, userId: JwtPayload) => {
 
   //! Payment
   const paymentSession = await initiatePayment(paymentData);
-  // console.log(paymentSession);
+  console.log(paymentSession);
 
   // Update slot status to booked
   slot.isBooked = "booked";
@@ -72,6 +72,7 @@ const createBooking = async (payload: TBooking, userId: JwtPayload) => {
   ]);
 
   return { populatedBooking, paymentSession };
+  // return populatedBooking;
 };
 
 const getAllBookings = async () => {

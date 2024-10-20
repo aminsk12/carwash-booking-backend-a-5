@@ -4,7 +4,8 @@ import { catchAsync } from "../../../utils/catchAsync";
 import sendResponse from "../../../utils/sendResponse";
 
 const createSlot = catchAsync(async (req, res) => {
-  const result = await SlotServices.createSlot(req.body);
+  const result = await SlotServices?.createSlot(req.body);
+  // console.log(req.body);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -16,7 +17,7 @@ const createSlot = catchAsync(async (req, res) => {
 
 const getAllSlots = catchAsync(async (req, res) => {
   const { date, serviceId } = req.query;
-  const result = await SlotServices.getAllSlots(
+  const result = await SlotServices?.getAllSlots(
     date as string,
     serviceId as string
   );
@@ -30,7 +31,7 @@ const getAllSlots = catchAsync(async (req, res) => {
 });
 const getSingleSlot = catchAsync(async (req, res) => {
   const { slotId } = req.params;
-  const result = await SlotServices.getSingleSlot(slotId);
+  const result = await SlotServices?.getSingleSlot(slotId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -53,7 +54,6 @@ const updateSlotStatus = catchAsync(async (req, res) => {
     data: result,
   });
 });
-
 
 export const SlotController = {
   createSlot,

@@ -11,10 +11,9 @@ export const initiatePayment = async (paymentData: any) => {
       store_id: process.env.STORE_ID,
       signature_key: process.env.SIGNATURE_KEY,
       tran_id: paymentData.transactionId,
-
-      success_url: `https://car-wash-booking-systam-backend-a-5.vercel.app/api/payment/confirmation`,
-      fail_url: `https://car-wash-booking-frontend-a-5.vercel.app/`,
-      cancel_url: "https://car-wash-booking-frontend-a-5.vercel.app/",
+        success_url: `https://car-washing-system-backend.vercel.app/api/payment/confirmation`,
+      fail_url: `https://car-washing-booking.web.app/`,
+      cancel_url: "https://car-washing-booking.web.app/",
       amount: paymentData.totalPrice,
       currency: "BDT",
       desc: "Merchant Registration Payment",
@@ -30,7 +29,7 @@ export const initiatePayment = async (paymentData: any) => {
       type: "json",
     });
 
-    console.log(response);
+    console.log(response)
     return response.data;
   } catch (err) {
     console.log(err);
@@ -51,7 +50,7 @@ export const verifyPayment = async (tnxId: string) => {
 
     return response.data;
   } catch (err) {
-    console.log(err);
+    console.log(err)
     throw new Error("Payment validation failed!");
   }
 };
